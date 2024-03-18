@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  connection: one
+  ride: one
+  status: MyString
+  cost: 1.5
+
+two:
+  connection: two
+  ride: two
+  status: MyString
+  cost: 1.5

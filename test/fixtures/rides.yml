@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: MyString
+  to: MyString
+  seats: 1
+  price_share: 1
+  user: one
+  time: 2024-03-17 22:17:53
+  active: false
+
+two:
+  from: MyString
+  to: MyString
+  seats: 1
+  price_share: 1
+  user: two
+  time: 2024-03-17 22:17:53
+  active: false
