@@ -65,3 +65,13 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 2.3"
+
+gem "activeadmin", "~> 3.2"
+
+gem "devise", "~> 4.9"
+
+gem "faker", "~> 3.2"
+
+gem "sass-rails", "~> 6.0"
