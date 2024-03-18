@@ -75,3 +75,5 @@ gem "devise", "~> 4.9"
 gem "faker", "~> 3.2"
 
 gem "sass-rails", "~> 6.0"
+
+gem "bcrypt", "~> 3.1"

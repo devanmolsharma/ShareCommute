@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.string :full_name
       t.string :phone
       t.string :email
+      t.string :password_digest
       t.boolean :verified
       t.string :address
       t.boolean :public
