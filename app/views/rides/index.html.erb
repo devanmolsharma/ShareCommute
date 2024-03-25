@@ -1,0 +1,22 @@
+<%=render 'navbar'%>
+
+
+
+<h1 class='text-2xl m-4'>New Additions</h1>
+
+<div class='flex overflow-scroll'>
+<%=render partial:'ride',collection:@rides%>
+</div>
+
+<div class='flex'>
+<div class='w-[800px]'>
+<%=render partial:'sidebar',:locals=> {:categories=>@categories}%>
+</div>
+<div>
+<h1 class='text-2xl m-4'>Explore</h1>
+<div class='flex flex-wrap overflow-scroll'>
+<%=render partial:'ride',collection:@rides%>
+</div>
+</div>
+
+</div>

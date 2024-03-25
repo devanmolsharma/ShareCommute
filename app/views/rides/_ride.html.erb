@@ -1,0 +1,17 @@
+ <a class="w-full px-4 min-w-[400px] md:w-1/2 lg:w-1/3 hover:cursor-pointer" href='/ride/<%=ride.id%>'>
+        <div class="mb-9 rounded-xl py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
+            <div class="mx-auto mb-7 inline-block">
+            <%= image_tag url_for(ride.user.profile_image) ,:class=>'max-h-[90px]' %>
+            </div>
+            <div>
+                <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl"><%=ride.to%>
+                </h3>
+                <p class="text-base font-medium text-body-color">
+                <%=ride.user.full_name%> is offering a ride
+                </p>
+                <p class="text-base font-medium text-body-color">
+                 category: <%=ride.category.name%>
+                </p>
+            </div>
+        </div>
+</a>

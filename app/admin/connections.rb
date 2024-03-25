@@ -5,7 +5,7 @@ ActiveAdmin.register Connection do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :user_1, :user_2, :connection_status
+  permit_params :user_1_id, :user_2_id, :connection_status
   #
   # or
   #

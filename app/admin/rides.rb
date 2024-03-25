@@ -5,7 +5,7 @@ ActiveAdmin.register Ride do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :from, :to, :seats, :price_share, :user_id, :time, :active
+  permit_params :from, :to, :seats, :price_share, :user_id, :time, :active,:category_id
   #
   # or
   #
