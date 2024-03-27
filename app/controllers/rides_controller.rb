@@ -8,7 +8,11 @@ class RidesController < ApplicationController
             redirect_to '/login'
             return
         end
-        @rides = getRides.all;
+        offset = 0;
+        if(params[:page]) 
+            offset = 20*params[:page];
+        end
+        @rides = getRides.all.limit(20).offset(offset);
         @categories = Category.all;
 
     end

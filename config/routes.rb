@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/login' => 'users#login'
   get '/register' => 'users#register'
   get '/' => 'rides#index'
+  get '/page/:page' => 'rides#index'
   get '/ride/:ride_id' => 'rides#view'
   get '/rides/find/:query' => 'rides#find'
   get '/rides/find/:cat/:query' => 'rides#find'
