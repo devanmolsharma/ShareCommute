@@ -30,6 +30,8 @@ class UsersController < ApplicationController
         );
         if(!@user.nil?)
             session['user_id'] = @user.id;
+            plan = @user.plan.build();
+            plan.save;
             redirect_to '/'
             return;
         end

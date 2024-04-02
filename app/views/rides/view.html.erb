@@ -1,6 +1,6 @@
 <%=render 'navbar'%>
 
-
+<form action='/addToCart' method='POST'>
 <div class="font-[sans-serif] p-20">
       <div class="p-6 lg:max-w-6xl max-w-2xl mx-auto">
         <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-8">
@@ -48,7 +48,7 @@
                 <button type="button" class="w-12 h-12 border-2 hover:border-gray-800 font-bold text-sm rounded-full flex items-center justify-center shrink-0"><%=i%></button>
               <%end%>
               </div>
-              <button type="button" class="w-full mt-4 px-4 py-3 bg-gray-800 hover:bg-gray-900 text-white font-bold rounded">Add to cart</button>
+              <button type="submit" class="w-full mt-4 px-4 py-3 bg-gray-800 hover:bg-gray-900 text-white font-bold rounded">Add to cart</button>
             </div>
             <div class="mt-8">
               <h3 class="text-lg font-bold text-gray-800">About the ride</h3>
@@ -62,3 +62,4 @@
         </div>
       </div>
     </div>
+    </form>

@@ -1,3 +1,4 @@
 class Plan < ApplicationRecord
-  belongs_to :trip
+  has_many :trips
+  belongs_to :user
 end

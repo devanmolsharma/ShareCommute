@@ -9,10 +9,18 @@ class RidesController < ApplicationController
             return
         end
         offset = 0;
-        if(params[:page]) 
-            offset = 20*params[:page];
+        @page = params[:page];
+        if(!@page.nil?) 
+            offset = 20*(@page.to_i-1);
+            @page = @page.to_i
+        else
+            @page = 1;
         end
+        
         @rides = getRides.all.limit(20).offset(offset);
+        @isLastPage = (getRides.all.limit(20).offset(offset+20).count) == 0;
+        @newRides = getRides.where("created_at <= ?",3.days.ago).order(:created_at).limit(20);
+        @updatedRides = getRides.where("updated_at <= ?",3.days.ago).order(:updated_at).limit(20);
         @categories = Category.all;
 
     end
@@ -57,6 +65,19 @@ class RidesController < ApplicationController
 
         return usr 
     end
+
+    def addToPlan()
+        itemId = params[:id];
+        id = session['user_id'];
+        ride = Ride.find(itemId)
+        @user= User.find(id);
+        conn = Connection.where(user_1_id:[ride.user.id,@user.id]).or(user_2_id:[ride.user.id,@user.id]).first;
+        @user.plan.plans.build(
+            connection:conn,
+            ride:ride,
+            seats:2,
+            )
+        end
 
 
     def view

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :rides
     has_many :connections
+    has_one :plan
     has_one_attached :profile_image
     has_secure_password
     

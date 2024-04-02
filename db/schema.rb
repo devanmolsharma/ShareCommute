@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_045621) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_033258) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -93,11 +93,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_045621) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.integer "trip_id", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_plans_on_trip_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -122,7 +122,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_045621) do
     t.float "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seats"
+    t.integer "plan_id", null: false
     t.index ["connection_id"], name: "index_trips_on_connection_id"
+    t.index ["plan_id"], name: "index_trips_on_plan_id"
     t.index ["ride_id"], name: "index_trips_on_ride_id"
   end
 
@@ -144,9 +147,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_045621) do
   add_foreign_key "connections", "users", column: "user_2_id"
   add_foreign_key "payments", "trips"
   add_foreign_key "payments", "users"
-  add_foreign_key "plans", "trips"
+  add_foreign_key "plans", "users"
   add_foreign_key "rides", "categories"
   add_foreign_key "rides", "users"
   add_foreign_key "trips", "connections"
+  add_foreign_key "trips", "plans"
   add_foreign_key "trips", "rides"
 end
