@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post '/auth' => 'users#authenticate'
   post '/new' => 'users#create'
   post '/addToCart' => 'rides#addToPlan'
+  get '/plan/remove/:id' => 'plans#remove'
+  get '/plan/change/:id/seats/:seats' => 'plans#changeSeats'
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

@@ -71,12 +71,14 @@ class RidesController < ApplicationController
         id = session['user_id'];
         ride = Ride.find(itemId)
         @user= User.find(id);
-        conn = Connection.where(user_1_id:[ride.user.id,@user.id]).or(user_2_id:[ride.user.id,@user.id]).first;
-        @user.plan.plans.build(
+        conn = Connection.where(user_1_id:[ride.user.id,@user.id]).or(Connection.where(user_2_id:[ride.user.id,@user.id])).first;
+        trip = @user.plan.trips.build(
             connection:conn,
             ride:ride,
             seats:2,
             )
+        trip.save;
+            redirect_to '/plan'
         end
 
 

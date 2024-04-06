@@ -7,9 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-Create Users
+# Create Users
 
 10.times do |i|
 
@@ -65,23 +65,23 @@ CSV.foreach(file) do |row|
 end
 
 
-# Category.all.each do |cat|
-#     usr = User.find(rand(5...10))
+Category.all.each do |cat|
+    usr = User.find(rand(5...10))
 
-#     10.times do |i|
+    10.times do |i|
 
-#         res = URI.open('https://randomuser.me/api/')
-#         json_data = JSON.load(res)['results'][0]
+        res = URI.open('https://randomuser.me/api/')
+        json_data = JSON.load(res)['results'][0]
 
-#         ride = cat.rides.build(
-#             user:usr,
-#             seats:rand(1...4),
-#             price_share:rand(8...15),
-#             from:json_data['location']['timezone']["description"],
-#             to:"#{json_data['location']['city']} #{json_data['location']['state']}",
-#         )
+        ride = cat.rides.build(
+            user:usr,
+            seats:rand(1...4),
+            price_share:rand(8...15),
+            from:json_data['location']['timezone']["description"],
+            to:"#{json_data['location']['city']} #{json_data['location']['state']}",
+        )
 
-#         ride.save
+        ride.save
 
-#     end
-# end
+    end
+end

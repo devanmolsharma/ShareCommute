@@ -1,27 +1,40 @@
 <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
-        <div class="md:w-4/12 2xl:w-1/4 w-full">
-          <img src="https://i.ibb.co/6gzWwSq/Rectangle-20-1.png" alt="Black Leather Purse" class="h-full object-center object-cover md:block hidden" />
-          <img src="https://i.ibb.co/TTnzMTf/Rectangle-21.png" alt="Black Leather Purse" class="md:hidden w-full h-full object-center object-cover" />
+    <div class="md:w-4/12 2xl:w-1/4 w-full">
+        <img src="<%=url_for(trip.ride.user.profile_image)%>" alt="Black Leather Purse"
+            class="h-full object-center object-cover md:block hidden" />
+        <img src="<%=url_for(trip.ride.user.profile_image)%>" alt="Black Leather Purse"
+            class="md:hidden w-full h-full object-center object-cover" />
+    </div>
+    <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
+        <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">from: <%=trip.ride.from%>
+        </p>
+        <div class="flex items-center justify-between w-full">
+            <p class="text-base font-black leading-none text-gray-800">to: <%=trip.ride.to%>
+            </p>
+            <select aria-label="Select Seats" class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none"
+                onchange="fetch('/plan/change/<%=trip.id%>/seats/' + event.target.value)">
+                <option value='1' <%if(trip.seats == 1)
+                 concat('selected = "selected"') 
+                 end%>>01</option>
+                <option value='2' <%if(trip.seats == 2)
+                 concat('selected = "selected"') 
+                 end%>>02</option>
+                <option value='3' <%if(trip.seats == 3)
+                 concat('selected = "selected"') 
+                 end%>>03</option>
+            </select>
         </div>
-        <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-          <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
-          <div class="flex items-center justify-between w-full">
-            <p class="text-base font-black leading-none text-gray-800">Luxe card holder</p>
-            <select aria-label="Select quantity" class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-          </div>
-          <p class="text-xs leading-3 text-gray-600 pt-2">Height: 10 inches</p>
-          <p class="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
-          <p class="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
-          <div class="flex items-center justify-between pt-5">
+        <p class="text-xs leading-3 text-gray-600 pt-2">with: <%=trip.ride.user.full_name%>
+        </p>
+        <p class="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
+        <p class="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
+        <div class="flex items-center justify-between pt-5">
             <div class="flex itemms-center">
-              <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
-              <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                <a href='/plan/remove/<%=trip.id%>'
+                    class="text-xs leading-3 underline text-red-500 al-5 cursor-pointer">Remove</a>
             </div>
             <p class="text-base font-black leading-none text-gray-800">,000</p>
-          </div>
         </div>
-      </div>
+    </div>
+</div>

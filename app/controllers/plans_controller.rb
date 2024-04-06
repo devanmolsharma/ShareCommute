@@ -11,4 +11,18 @@ class PlansController < ApplicationController
         end
         @trips = @plan.trips;
     end
+
+
+    def remove
+        trip = Trip.find(params[:id]);
+        trip.destroy
+        redirect_to '/plan'
+    end
+
+    def changeSeats
+        trip = Trip.find(params[:id]);
+        trip.seats = params[:seats];
+        trip.save;
+        redirect_to '/plan'
+    end
 end
