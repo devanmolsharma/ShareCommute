@@ -18,19 +18,25 @@ class UsersController < ApplicationController
         redirect_to '/login'
     end
 
+    def register
+        @provinces = Province.all;
+    end
+
 
     def create
         data = params[:user]
+        @province = Province.find(data[:province]);
         @user = User.create(
             full_name:data[:full_name],
             email:data[:email],
+            province:@province,
             address:data[:address],
             password:data[:password],
             password_confirmation:data[:password_confirmation],
         );
         if(!@user.nil?)
             session['user_id'] = @user.id;
-            plan = @user.plan.build();
+            plan = Plan.new(user:@user);
             plan.save;
             redirect_to '/'
             return;

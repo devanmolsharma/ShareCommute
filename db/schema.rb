@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_033258) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_223156) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -100,6 +100,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_033258) do
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rides", force: :cascade do |t|
     t.string "from"
     t.string "to"
@@ -139,6 +145,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_033258) do
     t.boolean "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "province_id"
+    t.index ["province_id"], name: "index_users_on_province_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -153,4 +161,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_033258) do
   add_foreign_key "trips", "connections"
   add_foreign_key "trips", "plans"
   add_foreign_key "trips", "rides"
+  add_foreign_key "users", "provinces"
 end
