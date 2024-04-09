@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_223156) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_07_185620) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -97,6 +97,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_223156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.float "taxes"
+    t.float "total"
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
@@ -104,6 +106,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_223156) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "gst"
+    t.float "pst"
   end
 
   create_table "rides", force: :cascade do |t|

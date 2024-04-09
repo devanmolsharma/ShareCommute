@@ -72,10 +72,11 @@ class RidesController < ApplicationController
         ride = Ride.find(itemId)
         @user= User.find(id);
         conn = Connection.where(user_1_id:[ride.user.id,@user.id]).or(Connection.where(user_2_id:[ride.user.id,@user.id])).first;
-        trip = @user.plan.trips.build(
+        trip = @user.plans.where(status:"unpaid")[0].trips.build(
             connection:conn,
             ride:ride,
             seats:2,
+            cost:2*ride.price_share
             )
         trip.save;
             redirect_to '/plan'

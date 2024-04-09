@@ -17,7 +17,7 @@ ActiveAdmin.register User do
   remove_filter :profile_image_blob
   remove_filter :profile_image_attachment
   remove_filter :connections
-  remove_filter :plan
+  remove_filter :plans
 
   form do |f|
     f.inputs "User Details" do
