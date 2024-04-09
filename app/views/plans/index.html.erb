@@ -23,6 +23,7 @@
         <span class="font-semibold text-sm uppercase">Trips cost: <%= @plan.trips.sum(:cost) %></span><br/>
         <span class="font-semibold text-sm uppercase">GST: <%= @user.province.gst %>% </span><br/>
         <span class="font-semibold text-sm uppercase">PST: <%= @user.province.pst %>% </span><br/>
+        <span class="font-semibold text-sm uppercase">HST: <%= @user.province.hst %>% </span><br/>
         <span class="font-semibold text-sm">$<%= @plan.total %></span>
       </div>
       
