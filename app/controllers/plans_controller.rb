@@ -3,13 +3,21 @@ class PlansController < ApplicationController
     id = session["user_id"]
     @user = User.find(id)
     @plan = @user.plans.where(status: "unpaid").first
-    total = calculate_total;
-    taxes_total  = calculate_taxes;
-    @plan.taxes = total*taxes_total;
-    @plan.total = total + total*taxes_total # Calculate total
+    total = calculate_total
+    taxes_total = calculate_taxes
+    @plan.taxes = total * taxes_total
+    @plan.total = total + total * taxes_total # Calculate total
 
     @plan.save
   end
+
+  def past_orders
+    id = session["user_id"]
+    @user = User.find(id)
+    @orders = @user.plans.where(status: "paid")
+    return
+  end
+
 
   def remove
     trip = Trip.find(params[:id])
@@ -56,6 +64,7 @@ class PlansController < ApplicationController
     total = @user.plans.where(status: "unpaid").first.trips.sum(:cost)
     total
   end
+
 
   def create_new_plan_unpaid
     p = Plan.new(user: @user, status: "unpaid")
