@@ -1,8 +1,9 @@
 class Connection < ApplicationRecord
-  belongs_to :user_1,class_name: 'User'
-  belongs_to :user_2,class_name: 'User'
+  belongs_to :user_1, class_name: 'User'
+  belongs_to :user_2, class_name: 'User'
 
-  validates :user_1,:user_2,presence:true
+  validates :user_1, presence: true
+  validates :user_2, presence: true
 
   def self.ransackable_associations(auth_object = nil)
     ["user_1", "user_2"]
