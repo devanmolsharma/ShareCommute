@@ -1,36 +1,40 @@
-<%=render 'navbar'%>
+<%=render 'navbar' %>
 
-<%if (@page==1)%>
-<div class='snap-y'>
+    <%if (@page==1)%>
+        <div class='snap-y'>
 
-<div class="snap-top">
-<h1 class='text-2xl m-4'>New Additions</h1>
+            <div class="snap-top">
+                <h1 class='text-2xl m-4'>New Additions</h1>
 
-<div class='flex overflow-scroll'>
-<%=render partial:'ride',collection:@newRides%>
-</div>
+                <div class='flex overflow-scroll'>
+                    <%=render partial:'ride',collection:@newRides%>
+                </div>
 
-<h1 class='text-2xl m-4'>Newly Updated</h1>
-<div class='flex overflow-scroll'>
-<%=render partial:'ride',collection:@updatedRides%>
-</div>
-</div>
-<div class='flex snap-top max-h-[100vh] relative'>
-<div class='w-[800px]'>
-<%=render partial:'sidebar',:locals=> {:categories=>@categories}%>
-</div>
-<div>
-<%end%>
-<div class='flex flex-wrap overflow-scroll max-h-[96vh]'>
-<h1 class='text-2xl m-4 w-full'>Explore</h1>
-<div class=' flex m-4 w-full'><%=render partial:'/categories/category',collection:@categories%></div>
-<%=render partial:'ride',collection:@rides%>
-<%if (!@isLastPage)%>
-<a href="/page/<%=@page+1%>" class="absolute bottom-20 right-20 align-center items-center text-center p-2 my-2 x-auto text-white rounded bg-red-600">Next Page</a>
-<%end%>
-</div>
-</div>
+                <h1 class='text-2xl m-4'>Newly Updated</h1>
+                <div class='flex overflow-scroll'>
+                    <%=render partial:'ride',collection:@updatedRides%>
+                </div>
+            </div>
+            <div class='flex snap-top max-h-[100vh] relative max-md:flex-col'>
+                    <div class='w-[800px] '>
+                    <%=render partial:'sidebar',:locals=> {:categories=>@categories}%>
+                </div>
+                <div>
+                    <%end%>
+                        <div class='flex flex-wrap overflow-scroll max-h-[96vh]'>
+                            <h1 class='text-2xl m-4 w-full'>Explore</h1>
+                            <div class=' flex m-4 w-full'>
+                                <%=render partial:'/categories/category',collection:@categories%>
+                            </div>
+                            <%=render partial:'ride',collection:@rides%>
+                                <%if (!@isLastPage)%>
+                                    <a href="/page/<%=@page+1%>"
+                                        class="fixed bottom-20 right-20 align-center items-center text-center p-2 my-2 x-auto text-white rounded bg-red-600 max-md:static max-md:mx-auto">Next
+                                        Page</a>
+                                    <%end%>
+                        </div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
