@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   belongs_to :province
   has_secure_password
+  is_numeric :phone
 
   validates :address, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: URI::MailTo::EMAIL_REGEXP }
